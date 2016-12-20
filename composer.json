@@ -1,0 +1,14 @@
+{
+    "name": "swavel/settisizer",
+    "description": "Settings dood",
+    "type": "metpackage",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "The Swavels",
+            "email": "info@swavelize.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
