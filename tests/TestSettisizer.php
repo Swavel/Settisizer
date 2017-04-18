@@ -1,10 +1,6 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-
-class TestSettisizer extends TestCase
+class TestSettisizer extends PHPUnit_Framework_TestCase
 {
     /**
      * A basic test example.

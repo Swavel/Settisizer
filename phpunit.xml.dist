@@ -11,8 +11,8 @@
         >
 
     <testsuites>
-        <testsuite name="php-xdg-base-dir unit tests">
-            <directory>./tests/</directory>
+        <testsuite name="Settisizer unit tests">
+            <file>tests/TestSettisizer.php</file>
         </testsuite>
     </testsuites>
 

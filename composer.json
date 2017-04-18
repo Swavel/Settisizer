@@ -9,6 +9,9 @@
             "email": "info@swavelize.com"
         }
     ],
+    "require-dev": {
+        "phpunit/phpunit": "@stable"
+    },
     "minimum-stability": "dev",
     "require": {}
 }
