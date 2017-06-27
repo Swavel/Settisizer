@@ -3,12 +3,16 @@ namespace Settisizer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
-class SettisizerStorage implements Settisizer{
+class SettisizerStorage implements Settisizer {
+    private $context;
+
+    public function setContext($context) {
+        $this->context = $context;
+    }
 
     public function setSetting($key, $value)
     {
-        Storage::put('settisizer/'.$this->getKeyString($key,'/'), $value);
-        return true;
+        return Storage::put('settisizer/'.$this->getKeyString($key,'/'), $value);
     }
 
     public function getSetting($key)
@@ -24,15 +28,15 @@ class SettisizerStorage implements Settisizer{
             : false;
     }
 
-    private function settingExists($key) {
+    public function settingExists($key) {
         return Storage::exists('settisizer/'.$this->getKeyString($key,'/'));
     }
 
-    private function getKeyString($key, $separator = '.') {
-        if($this instanceof Model) {
+    private function getKeyString($key, $separator = '/') {
+        if($this->context instanceof Model) {
             return 'eloquentmodel' . $separator .
-                $this->getTable() . $separator .
-                $this->{$this->getKeyName()} . $separator .
+                $this->context->getTable() . $separator .
+                $this->context->{$this->context->getKeyName()} . $separator .
                 $key;
         }
         return 'app' . $separator .

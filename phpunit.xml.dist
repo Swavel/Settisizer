@@ -12,7 +12,7 @@
 
     <testsuites>
         <testsuite name="Settisizer unit tests">
-            <file>tests/TestSettisizer.php</file>
+            <file>tests/TestSettisizerStorage.php</file>
         </testsuite>
     </testsuites>
 

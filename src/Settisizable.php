@@ -27,6 +27,11 @@ trait Settisizable {
         return $this->getSettisizer()->deleteSetting($key);
     }
 
+    public function settingExists($key)
+    {
+        return $this->getSettisizer()->settingExists($key);
+    }
+
     private function getSettisizer()
     {
         if($this->settisizerImplementation)
@@ -36,6 +41,7 @@ trait Settisizable {
         $driver = config('settisizer.driver', $this->defaultDriver);
         if(in_array($driver, $this->getAvailableDrivers())) {
             $this->settisizerImplementation = new $driver;
+            $this->settisizerImplementation->setContext($this);
         } else {
             $this->settisizerImplementation = new $this->defaultDriver;
         }
