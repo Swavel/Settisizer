@@ -6,37 +6,33 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 trait Settisizable {
-    function setSetting($key, $value) {
-        if($this->settingExists($key) === true) {
-            //do the update thing
-        } else {
-            //do the create thing
-        }
-        //TODO: replace with implementation
 
-        Storage::put('settisizer/'.$this->getKeyString($key,'/'), $value);
-        return true;
+    /**
+     * @var Settisizer
+     */
+    protected $settisizerImplementation = null;
+
+    function setSetting($key, $value)
+    {
+        return $this->getMySettisizer()->setSetting($key, $value);
     }
 
-    function getSetting($key) {
-        return $this->settingExists($key)
-            ? Storage::get('settisizer/'.$this->getKeyString($key,'/'))
-            : false;
+    function getSetting($key)
+    {
+        return $this->getMySettisizer()->getSetting($key);
     }
 
-    function settingExists($key) {
-        return Storage::exists('settisizer/'.$this->getKeyString($key,'/'));
+    function deleteSetting($key)
+    {
+        return $this->getMySettisizer()->deleteSetting($key);
     }
 
-    private function getKeyString($key, $separator = '.') {
-        if($this instanceof Model) {
-            return 'eloquentmodel' . $separator .
-                $this->getTable() . $separator .
-                $this->{$this->getKeyName()} . $separator .
-                $key;
-        }
-
-        return 'app' . $separator .
-            $key;
+    public function getMySettisizer()
+    {
+        if($this->settisizerImplementation)
+            return $this->settisizerImplementation;
+        $this->settisizerImplementation = new SettisizerStorage();
+        return $this->settisizerImplementation;
     }
+
 }

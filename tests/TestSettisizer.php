@@ -11,8 +11,9 @@ class TestSettisizer extends TestCase
 
     public function testSetAndRetrieveSetting()
     {
-        //TODO: next time!
-        $this->assertTrue(true);
+        $u = \App\User::all()->first();
+        $u->setSetting('settingname', 'testtest');
+        $this->assertTrue($u->getSetting('settingname') === 'testtest');
     }
 
     public function testSetSetting() {
