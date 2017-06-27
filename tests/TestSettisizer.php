@@ -6,7 +6,7 @@ class TestSettisizer extends TestCase
     public function testSettingNotExists() {
         //TODO: mock this
         $u = \App\User::all()->first();
-        $this->assertFalse($u->settingExists('blabla'));
+        $this->assertNull($u->getSetting('blabla'));
     }
 
     public function testSetAndRetrieveSetting()

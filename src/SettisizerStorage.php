@@ -15,7 +15,7 @@ class SettisizerStorage implements Settisizer{
     {
         return $this->settingExists($key)
             ? Storage::get('settisizer/'.$this->getKeyString($key,'/'))
-            : false;
+            : null;
     }
 
     public function deleteSetting($key) {
