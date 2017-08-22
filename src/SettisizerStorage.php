@@ -39,7 +39,7 @@ class SettisizerStorage implements Settisizer {
                 $this->context->{$this->context->getKeyName()} . $separator .
                 $key;
         }
-        return 'app' . $separator .
+        return 'global' . $separator .
             $key;
     }
 
