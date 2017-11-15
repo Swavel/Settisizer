@@ -1,6 +1,6 @@
 {
     "name": "swavel/settisizer",
-    "description": "Settings dood",
+    "description": "Easy implementable package to handle application settings for different scopes with flexible storage places",
     "type": "metpackage",
     "license": "MIT",
     "authors": [
