@@ -37,5 +37,6 @@ class TestSettisizerStorage extends TestCase
 
         $this->assertFileExists($filePath);
         File::delete($filePath);
+
     }
 }

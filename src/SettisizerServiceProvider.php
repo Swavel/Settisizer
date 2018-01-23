@@ -13,7 +13,17 @@ class SettisizerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->publishes([
+            __DIR__.'/../config/settisizer.php' => config_path('settisizer.php'),
+        ]);
+
+        $configPath = __DIR__ . '/../config/settisizer.php';
+        if (function_exists('config_path')) {
+            $publishPath = config_path('settisizer.php');
+        } else {
+            $publishPath = base_path('config/settisizer.php');
+        }
+        $this->publishes([$configPath => $publishPath], 'config');
     }
 
     /**
@@ -23,6 +33,7 @@ class SettisizerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $configPath = __DIR__ . '/../config/settisizer.php';
+        $this->mergeConfigFrom($configPath, 'settisizer');
     }
 }

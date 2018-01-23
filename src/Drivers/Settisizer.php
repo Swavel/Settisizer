@@ -1,5 +1,5 @@
 <?php
-namespace Settisizer;
+namespace Settisizer\Drivers;
 
 
 Interface Settisizer{

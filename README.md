@@ -55,6 +55,12 @@ $settisizer->setSetting([globalsettingname], [settingvalue]);
 $settisizer->getSetting([globalsettingname]);
 ```
 
+To manage your own config. Run this command.
+
+```
+php artisan vendor:publish --provider=Settisizer\SettisizerServiceProvider
+```
+
 
 
 # Developer hints
@@ -66,9 +72,10 @@ Run phpUnit tests with ../../../vendor/bin/phpunit
 ## Next steps
 
  - Integrate publish function to write standard config file (to select different drivers)
- - Comment the whole thingy
+ - Comment the whole thing
  - Write a second driver (mysql, redis)
  - Facade to access global Settisizer with 
+ - name the settings-table for driver mysql
 
 ``` 
 <?php

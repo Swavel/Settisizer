@@ -2,15 +2,22 @@
 
 namespace Settisizer;
 
+use Settisizer\Drivers\SettisizerFileStorage;
+use Settisizer\Drivers\SettisizerMysqlStorage;
+
 trait Settisizable {
 
     /**
-     * @var Settisizer
+     * @var /Settisizer/Drivers/Settisizer
      */
     protected $settisizerImplementation = null;
-        // replace with reflection class
-    private $availableDrivers = [SettisizerStorage::class];
-    private $defaultDriver = SettisizerStorage::class;
+
+    protected $drivers = [
+        'file' => SettisizerFileStorage::class,
+        'mysql' => SettisizerMysqlStorage::class
+    ];
+
+    private $defaultDriver = SettisizerFileStorage::class;
 
     function setSetting($key, $value)
     {
@@ -39,18 +46,15 @@ trait Settisizable {
 
         // read from config
         $driver = config('settisizer.driver', $this->defaultDriver);
-        if(in_array($driver, $this->getAvailableDrivers())) {
-            $this->settisizerImplementation = new $driver;
-            $this->settisizerImplementation->setContext($this);
+        if(key_exists($driver, $this->drivers)) {
+            $this->settisizerImplementation = new $this->drivers[$driver];
         } else {
             $this->settisizerImplementation = new $this->defaultDriver;
         }
 
-        return $this->settisizerImplementation;
-    }
+        $this->settisizerImplementation->setContext($this);
 
-    private function getAvailableDrivers() {
-        return $this->availableDrivers;
+        return $this->settisizerImplementation;
     }
 
 }
