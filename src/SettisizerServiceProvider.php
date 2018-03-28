@@ -15,15 +15,11 @@ class SettisizerServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../config/settisizer.php' => config_path('settisizer.php'),
-        ]);
+        ], 'config');
 
-        $configPath = __DIR__ . '/../config/settisizer.php';
-        if (function_exists('config_path')) {
-            $publishPath = config_path('settisizer.php');
-        } else {
-            $publishPath = base_path('config/settisizer.php');
-        }
-        $this->publishes([$configPath => $publishPath], 'config');
+        $this->publishes([
+            __DIR__.'/../database/migrations/create_settisizer_table.php.stub' => database_path('/migrations/'.date('Y_m_d_His', time()).'_create_settisizer_table.php'),
+        ], 'migrations');
     }
 
     /**

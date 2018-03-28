@@ -70,10 +70,7 @@ Run phpUnit tests with ../../../vendor/bin/phpunit
 # Roadmap 
 
 ## Next steps
-
- - Integrate publish function to write standard config file (to select different drivers)
  - Comment the whole thing
- - Write a second driver (mysql, redis)
  - Facade to access global Settisizer with 
  - name the settings-table for driver mysql
 
@@ -81,4 +78,11 @@ Run phpUnit tests with ../../../vendor/bin/phpunit
 <?php
 Settisizer::getSetting('setting_name')
 ```
-
+ 
+## In progress
+27.03.2018
+ - Write a second driver (mysql, redis)
+ 
+## Done
+27.03.2018
+  - Integrate publish function to write standard config file (to select different drivers)

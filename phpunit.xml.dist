@@ -13,6 +13,7 @@
     <testsuites>
         <testsuite name="Settisizer unit tests">
             <file>tests/TestSettisizerStorage.php</file>
+            <file>tests/TestSettisizerDatabaseStorage.php</file>
         </testsuite>
     </testsuites>
 
